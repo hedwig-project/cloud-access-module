@@ -1,0 +1,7 @@
+version: '2'
+services:
+  db:
+    image: mongo:3
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles
