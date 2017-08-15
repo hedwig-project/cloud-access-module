@@ -1,6 +1,7 @@
 # cloud-access-module
 
 <!-- Start: Badges section -->
+[![Build Status][travis-ci-badge]](https://travis-ci.org/hedwig-project/cloud-access-module)
 [![Coverage Status][coveralls-badge]](https://coveralls.io/github/hedwig-project/cloud-access-module?branch=master)
 [![NSP Status][nsp-badge]](https://nodesecurity.io/orgs/hedwig/projects/58e2e400-8188-455e-97a3-27bf09a76065)
 ![MIT License][license-badge]
@@ -41,6 +42,7 @@ MIT
 [mocha]: https://mochajs.org/
 [istanbul]: https://istanbul.js.org/
 [winston]: https://github.com/winstonjs/winston
+[travis-ci-badge]: https://travis-ci.org/hedwig-project/cloud-access-module.svg?branch=master
 [coveralls-badge]: https://coveralls.io/repos/github/hedwig-project/cloud-access-module/badge.svg?branch=master
 [nsp-badge]: https://nodesecurity.io/orgs/hedwig/projects/58e2e400-8188-455e-97a3-27bf09a76065/badge
 [license-badge]: https://img.shields.io/github/license/hedwig-project/cloud-access-module.svg
