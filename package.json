@@ -1,6 +1,6 @@
 {
   "name": "cloud-access-module",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Hedwig Access Module microservice",
   "repository": {
     "type": "git",
@@ -14,6 +14,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon app/index.js --exec babel-node",
     "build": "babel app --out-dir dist",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags",
     "audit": "nsp check",
     "lint": "eslint app",
     "lint:fix": "eslint app --fix",
