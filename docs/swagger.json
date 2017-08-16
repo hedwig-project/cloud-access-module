@@ -1,0 +1,561 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Hedwig Access Module microservice.",
+    "version": "1.0.0",
+    "title": "Hedwig Access Module",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/hedwig-project/cloud-access-module/blob/master/LICENSE"
+    }
+  },
+  "host": "hedwig-project.github.io",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "alarm"
+    },
+    {
+      "name": "gate"
+    },
+    {
+      "name": "humidity"
+    },
+    {
+      "name": "presence"
+    },
+    {
+      "name": "relay"
+    },
+    {
+      "name": "temperature"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/alarm": {
+      "get": {
+        "tags": [
+          "alarm"
+        ],
+        "summary": "Get alarm data records",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Alarm"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "alarm"
+        ],
+        "summary": "Create a new alarm data record",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Alarm data object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "active"
+              ],
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "active": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Alarm"
+            }
+          },
+          "500": {
+            "description": "ValidationError"
+          }
+        }
+      }
+    },
+    "/gate": {
+      "get": {
+        "tags": [
+          "gate"
+        ],
+        "summary": "Get gate data records",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Gate"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "gate"
+        ],
+        "summary": "Create a new gate data record",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Gate data object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "open"
+              ],
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "open": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Gate"
+            }
+          },
+          "500": {
+            "description": "ValidationError"
+          }
+        }
+      }
+    },
+    "/humidity": {
+      "get": {
+        "tags": [
+          "humidity"
+        ],
+        "summary": "Get humidity data records",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Humidity"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "humidity"
+        ],
+        "summary": "Create a new humidity data record",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Humidity data object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "humidity"
+              ],
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "humidity": {
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Humidity"
+            }
+          },
+          "500": {
+            "description": "ValidationError"
+          }
+        }
+      }
+    },
+    "/presence": {
+      "get": {
+        "tags": [
+          "presence"
+        ],
+        "summary": "Get presence data records",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Presence"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "presence"
+        ],
+        "summary": "Create a new presence data record",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Presence data object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "presence"
+              ],
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "presence": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Presence"
+            }
+          },
+          "500": {
+            "description": "ValidationError"
+          }
+        }
+      }
+    },
+    "/relay": {
+      "get": {
+        "tags": [
+          "relay"
+        ],
+        "summary": "Get relay data records",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Relay"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "relay"
+        ],
+        "summary": "Create a new relay data record",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Relay data object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "open"
+              ],
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "open": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Relay"
+            }
+          },
+          "500": {
+            "description": "ValidationError"
+          }
+        }
+      }
+    },
+    "/temperature": {
+      "get": {
+        "tags": [
+          "temperature"
+        ],
+        "summary": "Get temperature data records",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Temperature"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "temperature"
+        ],
+        "summary": "Create a new temperature data record",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Temperature data object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "temperature"
+              ],
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "temperature": {
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/Temperature"
+            }
+          },
+          "500": {
+            "description": "ValidationError"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Alarm": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "format": "binary"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "timeSinceLastChange": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Gate": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "format": "binary"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "open": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Humidity": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "format": "binary"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "humidity": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "Presence": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "format": "binary"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "presence": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Relay": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "format": "binary"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "open": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Temperature": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "format": "binary"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "temperature": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    }
+  }
+}
