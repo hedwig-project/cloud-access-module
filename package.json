@@ -1,6 +1,6 @@
 {
   "name": "cloud-access-module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Hedwig Access Module microservice",
   "repository": {
     "type": "git",
