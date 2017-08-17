@@ -3,7 +3,7 @@ import logger from '../logger'
 
 function listAll(req, res, next) {
   Relay
-    .find({}, { time: 1, name: 1, open: 1 })
+    .find({}, { __v: 0 })
     .exec()
     .then(relays => res.status(200).json(relays))
     .catch(e => next(e))

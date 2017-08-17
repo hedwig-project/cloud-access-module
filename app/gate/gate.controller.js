@@ -3,7 +3,7 @@ import logger from '../logger'
 
 function listAll(req, res, next) {
   Gate
-    .find({}, { time: 1, open: 1 })
+    .find({}, { __v: 0 })
     .exec()
     .then(gates => res.status(200).json(gates))
     .catch(e => next(e))

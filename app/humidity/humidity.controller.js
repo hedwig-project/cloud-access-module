@@ -3,7 +3,7 @@ import logger from '../logger'
 
 function listAll(req, res, next) {
   Humidity
-    .find({}, { time: 1, humidity: 1 })
+    .find({}, { __v: 0 })
     .exec()
     .then(humidities => res.status(200).json(humidities))
     .catch(e => next(e))

@@ -8,7 +8,7 @@ import logger from '../logger'
 
 function listAllAlarm(req, res, next) {
   Alarm
-    .find({ controllerId: req.params.controllerId }, { __v: 0, })
+    .find({ controllerId: req.params.controllerId }, { __v: 0 })
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
@@ -16,7 +16,7 @@ function listAllAlarm(req, res, next) {
 
 function listAllGate(req, res, next) {
   Gate
-    .find({ controllerId: req.params.controllerId }, { __v: 0, })
+    .find({ controllerId: req.params.controllerId }, { __v: 0 })
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
@@ -24,7 +24,7 @@ function listAllGate(req, res, next) {
 
 function listAllHumidity(req, res, next) {
   Humidity
-    .find({ controllerId: req.params.controllerId }, { __v: 0, })
+    .find({ controllerId: req.params.controllerId }, { __v: 0 })
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
@@ -32,7 +32,7 @@ function listAllHumidity(req, res, next) {
 
 function listAllPresence(req, res, next) {
   Presence
-    .find({ controllerId: req.params.controllerId }, { __v: 0, })
+    .find({ controllerId: req.params.controllerId }, { __v: 0 })
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
@@ -40,7 +40,7 @@ function listAllPresence(req, res, next) {
 
 function listAllRelay(req, res, next) {
   Relay
-    .find({ controllerId: req.params.controllerId }, { __v: 0, })
+    .find({ controllerId: req.params.controllerId }, { __v: 0 })
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
@@ -48,7 +48,7 @@ function listAllRelay(req, res, next) {
 
 function listAllTemperature(req, res, next) {
   Temperature
-    .find({ controllerId: req.params.controllerId }, { __v: 0, })
+    .find({ controllerId: req.params.controllerId }, { __v: 0 })
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))

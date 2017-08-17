@@ -3,7 +3,7 @@ import logger from '../logger'
 
 function listAll(req, res, next) {
   Alarm
-    .find({}, { time: 1, active: 1, timeSinceLastChange: 1 })
+    .find({}, { __v: 0 })
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
