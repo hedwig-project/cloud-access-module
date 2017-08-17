@@ -77,9 +77,13 @@
             "schema": {
               "type": "object",
               "required": [
+                "controllerId",
                 "active"
               ],
               "properties": {
+                "controllerId": {
+                  "type": "string"
+                },
                 "time": {
                   "type": "string",
                   "format": "date-time"
@@ -145,9 +149,13 @@
             "schema": {
               "type": "object",
               "required": [
+                "controllerId",
                 "open"
               ],
               "properties": {
+                "controllerId": {
+                  "type": "string"
+                },
                 "time": {
                   "type": "string",
                   "format": "date-time"
@@ -213,9 +221,13 @@
             "schema": {
               "type": "object",
               "required": [
+                "controllerId",
                 "humidity"
               ],
               "properties": {
+                "controllerId": {
+                  "type": "string"
+                },
                 "time": {
                   "type": "string",
                   "format": "date-time"
@@ -282,9 +294,13 @@
             "schema": {
               "type": "object",
               "required": [
+                "controllerId",
                 "presence"
               ],
               "properties": {
+                "controllerId": {
+                  "type": "string"
+                },
                 "time": {
                   "type": "string",
                   "format": "date-time"
@@ -350,10 +366,14 @@
             "schema": {
               "type": "object",
               "required": [
+                "controllerId",
                 "name",
                 "open"
               ],
               "properties": {
+                "controllerId": {
+                  "type": "string"
+                },
                 "time": {
                   "type": "string",
                   "format": "date-time"
@@ -422,9 +442,13 @@
             "schema": {
               "type": "object",
               "required": [
+                "controllerId",
                 "temperature"
               ],
               "properties": {
+                "controllerId": {
+                  "type": "string"
+                },
                 "time": {
                   "type": "string",
                   "format": "date-time"
@@ -459,6 +483,9 @@
           "type": "string",
           "format": "binary"
         },
+        "controllerId": {
+          "type": "string"
+        },
         "time": {
           "type": "string",
           "format": "date-time"
@@ -479,6 +506,9 @@
           "type": "string",
           "format": "binary"
         },
+        "controllerId": {
+          "type": "string"
+        },
         "time": {
           "type": "string",
           "format": "date-time"
@@ -494,6 +524,9 @@
         "_id": {
           "type": "string",
           "format": "binary"
+        },
+        "controllerId": {
+          "type": "string"
         },
         "time": {
           "type": "string",
@@ -512,6 +545,9 @@
           "type": "string",
           "format": "binary"
         },
+        "controllerId": {
+          "type": "string"
+        },
         "time": {
           "type": "string",
           "format": "date-time"
@@ -527,6 +563,9 @@
         "_id": {
           "type": "string",
           "format": "binary"
+        },
+        "controllerId": {
+          "type": "string"
         },
         "time": {
           "type": "string",
@@ -546,6 +585,9 @@
         "_id": {
           "type": "string",
           "format": "binary"
+        },
+        "controllerId": {
+          "type": "string"
         },
         "time": {
           "type": "string",
