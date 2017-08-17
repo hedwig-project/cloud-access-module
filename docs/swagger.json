@@ -16,6 +16,9 @@
       "name": "alarm"
     },
     {
+      "name": "controller"
+    },
+    {
       "name": "gate"
     },
     {
@@ -104,6 +107,192 @@
           },
           "500": {
             "description": "ValidationError"
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/alarm": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get alarm data records for a specific controller",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "schema": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Alarm"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/gate": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get gate data records for a specific controller",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "schema": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Gate"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/humidity": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get humidity data records for a specific controller",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "schema": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Humidity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/presence": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get presence data records for a specific controller",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "schema": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Presence"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/relay": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get relay data records for a specific controller",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "schema": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Relay"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/temperature": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get temperature data records for a specific controller",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "schema": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Temperature"
+              }
+            }
           }
         }
       }
