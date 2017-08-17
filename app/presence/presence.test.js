@@ -28,9 +28,9 @@ describe('Presence data', () => {
     it('it should GET some presence data records', done => {
       Presence
         .create([
-          { presence: 100 },
-          { presence: 150 },
-          { presence: 600 },
+          { controllerId: 'dummy-id-1234', presence: 100 },
+          { controllerId: 'dummy-id-1234', presence: 150 },
+          { controllerId: 'dummy-id-1234', presence: 600 },
         ])
         .then(() => {
           chai
@@ -51,11 +51,11 @@ describe('Presence data', () => {
       chai
         .request(server)
         .post('/api/presence')
-        .send({ presence: 600 })
+        .send({ controllerId: 'dummy-id-1234', presence: 600 })
         .end((err, res) => {
           expect(res).to.have.deep.property('status', 200)
           expect(res.body).to.be.an('object')
-          expect(res.body).to.include({ presence: 600 })
+          expect(res.body).to.include({ controllerId: 'dummy-id-1234', presence: 600 })
           expect(res.body).to.have.property('time')
           done()
         })

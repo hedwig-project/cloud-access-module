@@ -28,9 +28,9 @@ describe('Alarm data', () => {
     it('it should GET some alarm data records', done => {
       Alarm
         .create([
-          { active: false },
-          { active: false },
-          { active: true },
+          { controllerId: 'dummy-id-1234', active: false },
+          { controllerId: 'dummy-id-1234', active: false },
+          { controllerId: 'dummy-id-1234', active: true },
         ])
         .then(() => {
           chai
@@ -51,11 +51,11 @@ describe('Alarm data', () => {
       chai
         .request(server)
         .post('/api/alarm')
-        .send({ active: true })
+        .send({ controllerId: 'dummy-id-1234', active: true })
         .end((err, res) => {
           expect(res).to.have.deep.property('status', 200)
           expect(res.body).to.be.an('object')
-          expect(res.body).to.include({ active: true })
+          expect(res.body).to.include({ controllerId: 'dummy-id-1234', active: true })
           expect(res.body).to.have.property('timeSinceLastChange')
           expect(res.body).to.have.property('time')
           done()

@@ -28,9 +28,9 @@ describe('Gate data', () => {
     it('it should GET some gate data records', done => {
       Gate
         .create([
-          { open: false },
-          { open: false },
-          { open: true },
+          { controllerId: 'dummy-id-1234', open: false },
+          { controllerId: 'dummy-id-1234', open: false },
+          { controllerId: 'dummy-id-1234', open: true },
         ])
         .then(() => {
           chai
@@ -51,11 +51,11 @@ describe('Gate data', () => {
       chai
         .request(server)
         .post('/api/gate')
-        .send({ open: true })
+        .send({ controllerId: 'dummy-id-1234', open: true })
         .end((err, res) => {
           expect(res).to.have.deep.property('status', 200)
           expect(res.body).to.be.an('object')
-          expect(res.body).to.include({ open: true })
+          expect(res.body).to.include({ controllerId: 'dummy-id-1234', open: true })
           expect(res.body).to.have.property('time')
           done()
         })

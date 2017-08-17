@@ -28,9 +28,9 @@ describe('Humidity data', () => {
     it('it should GET some humidity data records', done => {
       Humidity
         .create([
-          { humidity: 80.7 },
-          { humidity: 78.9 },
-          { humidity: 79.1 },
+          { controllerId: 'dummy-id-1234', humidity: 80.7 },
+          { controllerId: 'dummy-id-1234', humidity: 78.9 },
+          { controllerId: 'dummy-id-1234', humidity: 79.1 },
         ])
         .then(() => {
           chai
@@ -51,11 +51,11 @@ describe('Humidity data', () => {
       chai
         .request(server)
         .post('/api/humidity')
-        .send({ humidity: 77.8 })
+        .send({ controllerId: 'dummy-id-1234', humidity: 77.8 })
         .end((err, res) => {
           expect(res).to.have.deep.property('status', 200)
           expect(res.body).to.be.an('object')
-          expect(res.body).to.include({ humidity: 77.8 })
+          expect(res.body).to.include({ controllerId: 'dummy-id-1234', humidity: 77.8 })
           expect(res.body).to.have.property('time')
           done()
         })

@@ -28,9 +28,9 @@ describe('Relay data', () => {
     it('it should GET some relay data records', done => {
       Relay
         .create([
-          { name: 'relay1', open: false },
-          { name: 'relay2', open: false },
-          { name: 'relay1', open: true },
+          { controllerId: 'dummy-id-1234', name: 'relay1', open: false },
+          { controllerId: 'dummy-id-1234', name: 'relay2', open: false },
+          { controllerId: 'dummy-id-1234', name: 'relay1', open: true },
         ])
         .then(() => {
           chai
@@ -51,11 +51,11 @@ describe('Relay data', () => {
       chai
         .request(server)
         .post('/api/relay')
-        .send({ name: 'relay2', open: true })
+        .send({ controllerId: 'dummy-id-1234', name: 'relay2', open: true })
         .end((err, res) => {
           expect(res).to.have.deep.property('status', 200)
           expect(res.body).to.be.an('object')
-          expect(res.body).to.include({ name: 'relay2', open: true })
+          expect(res.body).to.include({ controllerId: 'dummy-id-1234', name: 'relay2', open: true })
           expect(res.body).to.have.property('time')
           done()
         })

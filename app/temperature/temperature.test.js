@@ -28,9 +28,9 @@ describe('Temperature data', () => {
     it('it should GET some temperature data records', done => {
       Temperature
         .create([
-          { temperature: 25.3 },
-          { temperature: 25.5 },
-          { temperature: 24.9 },
+          { controllerId: 'dummy-id-1234', temperature: 25.3 },
+          { controllerId: 'dummy-id-1234', temperature: 25.5 },
+          { controllerId: 'dummy-id-1234', temperature: 24.9 },
         ])
         .then(() => {
           chai
@@ -51,11 +51,11 @@ describe('Temperature data', () => {
       chai
         .request(server)
         .post('/api/temperature')
-        .send({ temperature: 27.8 })
+        .send({ controllerId: 'dummy-id-1234', temperature: 27.8 })
         .end((err, res) => {
           expect(res).to.have.deep.property('status', 200)
           expect(res.body).to.be.an('object')
-          expect(res.body).to.include({ temperature: 27.8 })
+          expect(res.body).to.include({ controllerId: 'dummy-id-1234', temperature: 27.8 })
           expect(res.body).to.have.property('time')
           done()
         })
