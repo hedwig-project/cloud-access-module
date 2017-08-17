@@ -15,3 +15,5 @@ script:
   - yarn test:coverage
 after_script:
   - yarn test:report
+notifications:
+  email: false
