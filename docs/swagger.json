@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "Hedwig Access Module microservice.",
-    "version": "1.0.0",
+    "version": "0.2.0",
     "title": "Hedwig Access Module",
     "license": {
       "name": "MIT",
