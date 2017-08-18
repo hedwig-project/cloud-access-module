@@ -4,6 +4,8 @@ import logger from '../logger'
 function listAll(req, res, next) {
   Humidity
     .find({}, { __v: 0 })
+    .sort({ time: 'desc' })
+    .limit(50)
     .exec()
     .then(humidities => res.status(200).json(humidities))
     .catch(e => next(e))

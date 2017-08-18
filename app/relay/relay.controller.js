@@ -4,6 +4,8 @@ import logger from '../logger'
 function listAll(req, res, next) {
   Relay
     .find({}, { __v: 0 })
+    .sort({ time: 'desc' })
+    .limit(50)
     .exec()
     .then(relays => res.status(200).json(relays))
     .catch(e => next(e))

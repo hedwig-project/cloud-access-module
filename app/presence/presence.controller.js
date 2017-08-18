@@ -4,6 +4,8 @@ import logger from '../logger'
 function listAll(req, res, next) {
   Presence
     .find({}, { __v: 0 })
+    .sort({ time: 'desc' })
+    .limit(50)
     .exec()
     .then(presences => res.status(200).json(presences))
     .catch(e => next(e))

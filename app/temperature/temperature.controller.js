@@ -4,6 +4,8 @@ import logger from '../logger'
 function listAll(req, res, next) {
   Temperature
     .find({}, { __v: 0 })
+    .sort({ time: 'desc' })
+    .limit(50)
     .exec()
     .then(temperatures => res.status(200).json(temperatures))
     .catch(e => next(e))

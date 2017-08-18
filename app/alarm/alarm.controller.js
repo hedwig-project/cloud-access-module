@@ -4,6 +4,8 @@ import logger from '../logger'
 function listAll(req, res, next) {
   Alarm
     .find({}, { __v: 0 })
+    .sort({ time: 'desc' })
+    .limit(50)
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
