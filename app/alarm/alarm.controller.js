@@ -1,11 +1,16 @@
 import Alarm from './alarm.model'
+import { filterByTime } from '../helpers/parameters'
 import logger from '../logger'
 
-function listAll(req, res, next) {
-  Alarm
-    .find({}, { __v: 0 })
-    .sort({ time: 'desc' })
-    .limit(50)
+function list(req, res, next) {
+  const filter = filterByTime(req.query.from, req.query.to)
+  const query = Alarm.find(filter, { __v: 0 }).sort({ time: 'desc' })
+
+  if (filter.time === undefined) {
+    query.limit(50)
+  }
+
+  query
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
@@ -24,4 +29,4 @@ function errorHandler(err, req, res, next) {  // eslint-disable-line no-unused-v
   res.status(500).json(error)
 }
 
-export default { listAll, create, errorHandler }
+export default { list, create, errorHandler }

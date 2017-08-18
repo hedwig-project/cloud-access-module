@@ -4,65 +4,102 @@ import Humidity from '../humidity/humidity.model'
 import Presence from '../presence/presence.model'
 import Relay from '../relay/relay.model'
 import Temperature from '../temperature/temperature.model'
+import { filterByTime } from '../helpers/parameters'
 import logger from '../logger'
 
-function listAllAlarm(req, res, next) {
-  Alarm
-    .find({ controllerId: req.params.controllerId }, { __v: 0 })
-    .sort({ time: 'desc' })
-    .limit(50)
+function listAlarm(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+  const query = Alarm.find(filter, { __v: 0 }).sort({ time: 'desc' })
+
+  if (filter.time === undefined) {
+    query.limit(50)
+  }
+
+  query
     .exec()
     .then(alarms => res.status(200).json(alarms))
     .catch(e => next(e))
 }
 
-function listAllGate(req, res, next) {
-  Gate
-    .find({ controllerId: req.params.controllerId }, { __v: 0 })
-    .sort({ time: 'desc' })
-    .limit(50)
+function listGate(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+  const query = Gate.find(filter, { __v: 0 }).sort({ time: 'desc' })
+
+  if (filter.time === undefined) {
+    query.limit(50)
+  }
+
+  query
     .exec()
-    .then(alarms => res.status(200).json(alarms))
+    .then(gates => res.status(200).json(gates))
     .catch(e => next(e))
 }
 
-function listAllHumidity(req, res, next) {
-  Humidity
-    .find({ controllerId: req.params.controllerId }, { __v: 0 })
-    .sort({ time: 'desc' })
-    .limit(50)
+function listHumidity(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+  const query = Humidity.find(filter, { __v: 0 }).sort({ time: 'desc' })
+
+  if (filter.time === undefined) {
+    query.limit(50)
+  }
+
+  query
     .exec()
-    .then(alarms => res.status(200).json(alarms))
+    .then(humidities => res.status(200).json(humidities))
     .catch(e => next(e))
 }
 
-function listAllPresence(req, res, next) {
-  Presence
-    .find({ controllerId: req.params.controllerId }, { __v: 0 })
-    .sort({ time: 'desc' })
-    .limit(50)
+function listPresence(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+  const query = Presence.find(filter, { __v: 0 }).sort({ time: 'desc' })
+
+  if (filter.time === undefined) {
+    query.limit(50)
+  }
+
+  query
     .exec()
-    .then(alarms => res.status(200).json(alarms))
+    .then(presences => res.status(200).json(presences))
     .catch(e => next(e))
 }
 
-function listAllRelay(req, res, next) {
-  Relay
-    .find({ controllerId: req.params.controllerId }, { __v: 0 })
-    .sort({ time: 'desc' })
-    .limit(50)
+function listRelay(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+  const query = Relay.find(filter, { __v: 0 }).sort({ time: 'desc' })
+
+  if (filter.time === undefined) {
+    query.limit(50)
+  }
+
+  query
     .exec()
-    .then(alarms => res.status(200).json(alarms))
+    .then(relays => res.status(200).json(relays))
     .catch(e => next(e))
 }
 
-function listAllTemperature(req, res, next) {
-  Temperature
-    .find({ controllerId: req.params.controllerId }, { __v: 0 })
-    .sort({ time: 'desc' })
-    .limit(50)
+function listTemperature(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+  const query = Temperature.find(filter, { __v: 0 }).sort({ time: 'desc' })
+
+  if (filter.time === undefined) {
+    query.limit(50)
+  }
+
+  query
     .exec()
-    .then(alarms => res.status(200).json(alarms))
+    .then(temperatures => res.status(200).json(temperatures))
     .catch(e => next(e))
 }
 
@@ -73,11 +110,11 @@ function errorHandler(err, req, res, next) {  // eslint-disable-line no-unused-v
 }
 
 export default {
-  listAllAlarm,
-  listAllGate,
-  listAllHumidity,
-  listAllPresence,
-  listAllRelay,
-  listAllTemperature,
+  listAlarm,
+  listGate,
+  listHumidity,
+  listPresence,
+  listRelay,
+  listTemperature,
   errorHandler,
 }

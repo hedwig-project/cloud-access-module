@@ -5,7 +5,7 @@ const router = Router()
 
 router
   .route('/')
-  .get(Controller.listAll)
+  .get(Controller.list)
   .post(Controller.create)
 
 router.use(Controller.errorHandler)
