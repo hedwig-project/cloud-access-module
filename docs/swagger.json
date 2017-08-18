@@ -45,9 +45,23 @@
           "alarm"
         ],
         "summary": "Get alarm data records",
-        "description": "Get alarm data records (limited to 50 most recent)",
+        "description": "Get alarm data records. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -118,7 +132,7 @@
           "controller"
         ],
         "summary": "Get alarm data records for a specific controller",
-        "description": "Get alarm data records for a specific controller (limited to 50 most recent)",
+        "description": "Get alarm data records for a specific controller. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
         ],
@@ -129,6 +143,18 @@
             "description": "Local controller (Morpheus) ID",
             "required": true,
             "schema": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
           }
         ],
         "responses": {
@@ -150,7 +176,7 @@
           "controller"
         ],
         "summary": "Get gate data records for a specific controller",
-        "description": "Get gate data records for a specific controller (limited to 50 most recent)",
+        "description": "Get gate data records for a specific controller. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
         ],
@@ -161,6 +187,18 @@
             "description": "Local controller (Morpheus) ID",
             "required": true,
             "schema": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
           }
         ],
         "responses": {
@@ -182,7 +220,7 @@
           "controller"
         ],
         "summary": "Get humidity data records for a specific controller",
-        "description": "Get humidity data records for a specific controller (limited to 50 most recent)",
+        "description": "Get humidity data records for a specific controller. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
         ],
@@ -193,6 +231,18 @@
             "description": "Local controller (Morpheus) ID",
             "required": true,
             "schema": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
           }
         ],
         "responses": {
@@ -214,7 +264,7 @@
           "controller"
         ],
         "summary": "Get presence data records for a specific controller",
-        "description": "Get presence data records for a specific controller (limited to 50 most recent)",
+        "description": "Get presence data records for a specific controller. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
         ],
@@ -225,6 +275,18 @@
             "description": "Local controller (Morpheus) ID",
             "required": true,
             "schema": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
           }
         ],
         "responses": {
@@ -246,7 +308,7 @@
           "controller"
         ],
         "summary": "Get relay data records for a specific controller",
-        "description": "Get relay data records for a specific controller (limited to 50 most recent)",
+        "description": "Get relay data records for a specific controller. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
         ],
@@ -257,6 +319,18 @@
             "description": "Local controller (Morpheus) ID",
             "required": true,
             "schema": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
           }
         ],
         "responses": {
@@ -278,7 +352,7 @@
           "controller"
         ],
         "summary": "Get temperature data records for a specific controller",
-        "description": "Get temperature data records for a specific controller (limited to 50 most recent)",
+        "description": "Get temperature data records for a specific controller. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
         ],
@@ -289,6 +363,18 @@
             "description": "Local controller (Morpheus) ID",
             "required": true,
             "schema": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
           }
         ],
         "responses": {
@@ -310,9 +396,23 @@
           "gate"
         ],
         "summary": "Get gate data records",
-        "description": "Get gate data records (limited to 50 most recent)",
+        "description": "Get gate data records. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -383,9 +483,23 @@
           "humidity"
         ],
         "summary": "Get humidity data records",
-        "description": "Get humidity data records (limited to 50 most recent)",
+        "description": "Get humidity data records. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -457,9 +571,23 @@
           "presence"
         ],
         "summary": "Get presence data records",
-        "description": "Get presence data records (limited to 50 most recent)",
+        "description": "Get presence data records. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -530,9 +658,23 @@
           "relay"
         ],
         "summary": "Get relay data records",
-        "description": "Get relay data records (limited to 50 most recent)",
+        "description": "Get relay data records. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -607,9 +749,23 @@
           "temperature"
         ],
         "summary": "Get temperature data records",
-        "description": "Get temperature data records (limited to 50 most recent)",
+        "description": "Get temperature data records. Limited to 50 most recent if no time limit is set.",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Search is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
