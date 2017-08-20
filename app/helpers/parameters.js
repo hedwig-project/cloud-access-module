@@ -1,5 +1,15 @@
 import moment from 'moment'
 
+export function filterByRelayName(name = '') {
+  const filter = {}
+
+  if (name !== '') {
+    filter.name = name
+  }
+
+  return filter
+}
+
 export function filterByTime(from = '', to = '') {
   const filter = {}
 
@@ -18,4 +28,4 @@ export function filterByTime(from = '', to = '') {
   return filter
 }
 
-export default { filterByTime }
+export default { filterByRelayName, filterByTime }

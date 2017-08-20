@@ -322,6 +322,12 @@
           },
           {
             "in": "query",
+            "name": "name",
+            "description": "Relay name.",
+            "type": "string"
+          },
+          {
+            "in": "query",
             "name": "from",
             "description": "Start date (YYYY-MM-dd). Search is done considering 00:00:00 as start hour.",
             "type": "string"
@@ -663,6 +669,12 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "description": "Relay name.",
+            "type": "string"
+          },
           {
             "in": "query",
             "name": "from",

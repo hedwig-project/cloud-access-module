@@ -1,9 +1,11 @@
 import Relay from './relay.model'
-import { filterByTime } from '../helpers/parameters'
+import { filterByRelayName, filterByTime } from '../helpers/parameters'
 import logger from '../logger'
 
 function list(req, res, next) {
-  const filter = filterByTime(req.query.from, req.query.to)
+  const filter = Object.assign(
+    filterByRelayName(req.query.name),
+    filterByTime(req.query.from, req.query.to))
   const query = Relay.find(filter, { __v: 0 }).sort({ time: 'desc' })
 
   if (filter.time === undefined) {

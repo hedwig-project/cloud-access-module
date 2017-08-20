@@ -4,7 +4,7 @@ import Humidity from '../humidity/humidity.model'
 import Presence from '../presence/presence.model'
 import Relay from '../relay/relay.model'
 import Temperature from '../temperature/temperature.model'
-import { filterByTime } from '../helpers/parameters'
+import { filterByRelayName, filterByTime } from '../helpers/parameters'
 import logger from '../logger'
 
 function listAlarm(req, res, next) {
@@ -73,6 +73,7 @@ function listPresence(req, res, next) {
 
 function listRelay(req, res, next) {
   const filter = Object.assign(
+    filterByRelayName(req.query.name),
     filterByTime(req.query.from, req.query.to),
     { controllerId: req.params.controllerId })
   const query = Relay.find(filter, { __v: 0 }).sort({ time: 'desc' })
