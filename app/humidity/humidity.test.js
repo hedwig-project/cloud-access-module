@@ -1,5 +1,6 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
+import moment from 'moment'
 import server from '../index'
 import Humidity from './humidity.model'
 
@@ -42,6 +43,54 @@ describe('Humidity data', () => {
               expect(res.body.length).to.be.equal(3)
               done()
             })
+        })
+    })
+  })
+
+  describe('GET humidity data filtered by time', () => {
+    beforeEach(done => {
+      Humidity
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', humidity: 80.9 },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', humidity: 90.1 },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', humidity: 86.3 },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some humidity data records with a lower limit', done => {
+      chai
+        .request(server)
+        .get('/api/humidity?from=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some humidity data records with an upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/humidity?to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some humidity data records with a lower and upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/humidity?from=2017-08-12&to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(1)
+          done()
         })
     })
   })

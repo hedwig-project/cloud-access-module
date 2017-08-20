@@ -1,5 +1,6 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
+import moment from 'moment'
 import server from '../index'
 import Alarm from '../alarm/alarm.model'
 import Gate from '../gate/gate.model'
@@ -62,6 +63,54 @@ describe('Controller filtering', () => {
     })
   })
 
+  describe('GET alarm data for specific controller filtered by time', () => {
+    beforeEach(done => {
+      Alarm
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', active: false },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', active: false },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', active: true },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some alarm data records with a lower limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/alarm?from=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some alarm data records with an upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/alarm?to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some alarm data records with a lower and upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/alarm?from=2017-08-12&to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(1)
+          done()
+        })
+    })
+  })
+
   describe('GET gate data for specific controller', () => {
     it('it should GET zero gate data records for dummy controller', done => {
       chai
@@ -94,6 +143,54 @@ describe('Controller filtering', () => {
               expect(res.body.length).to.be.equal(3)
               done()
             })
+        })
+    })
+  })
+
+  describe('GET gate data for specific controller filtered by time', () => {
+    beforeEach(done => {
+      Gate
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', open: false },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', open: false },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', open: true },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some gate data records with a lower limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/gate?from=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some gate data records with an upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/gate?to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some gate data records with a lower and upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/gate?from=2017-08-12&to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(1)
+          done()
         })
     })
   })
@@ -134,6 +231,54 @@ describe('Controller filtering', () => {
     })
   })
 
+  describe('GET humidity data for specific controller filtered by time', () => {
+    beforeEach(done => {
+      Humidity
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', humidity: 80.9 },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', humidity: 90.1 },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', humidity: 86.3 },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some humidity data records with a lower limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/humidity?from=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some humidity data records with an upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/humidity?to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some humidity data records with a lower and upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/humidity?from=2017-08-12&to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(1)
+          done()
+        })
+    })
+  })
+
   describe('GET presence data for specific controller', () => {
     it('it should GET zero presence data records for dummy controller', done => {
       chai
@@ -166,6 +311,54 @@ describe('Controller filtering', () => {
               expect(res.body.length).to.be.equal(3)
               done()
             })
+        })
+    })
+  })
+
+  describe('GET presence data for specific controller filtered by time', () => {
+    beforeEach(done => {
+      Presence
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', presence: false },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', presence: false },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', presence: true },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some presence data records with a lower limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/presence?from=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some presence data records with an upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/presence?to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some presence data records with a lower and upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/presence?from=2017-08-12&to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(1)
+          done()
         })
     })
   })
@@ -206,6 +399,78 @@ describe('Controller filtering', () => {
     })
   })
 
+  describe('GET relay data for specific controller filtered by time', () => {
+    beforeEach(done => {
+      Relay
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', name: 'relay1', open: false },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', name: 'relay1', open: false },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', name: 'relay1', open: true },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some relay data records with a lower limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/relay?from=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some relay data records with an upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/relay?to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some relay data records with a lower and upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/relay?from=2017-08-12&to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(1)
+          done()
+        })
+    })
+  })
+
+  describe('GET relay data for specific controller filtered by name', () => {
+    beforeEach(done => {
+      Relay
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', name: 'relay1', open: false },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', name: 'relay2', open: false },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', name: 'relay2', open: true },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some relay data records for a specific relay name', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/relay?name=relay2')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+  })
+
   describe('GET temperature data for specific controller', () => {
     it('it should GET zero temperature data records for dummy controller', done => {
       chai
@@ -238,6 +503,54 @@ describe('Controller filtering', () => {
               expect(res.body.length).to.be.equal(3)
               done()
             })
+        })
+    })
+  })
+
+  describe('GET temperature data for specific controller filtered by time', () => {
+    beforeEach(done => {
+      Temperature
+        .create([
+          { time: moment(`2017-08-11T01:00:00Z`).toDate(), controllerId: 'dummy-id-1234', temperature: 23.2 },
+          { time: moment(`2017-08-12T02:00:00Z`).toDate(), controllerId: 'dummy-id-1234', temperature: 22.9 },
+          { time: moment(`2017-08-13T03:00:00Z`).toDate(), controllerId: 'dummy-id-1234', temperature: 23.1 },
+        ])
+        .then(() => done())
+    })
+
+    it('it should GET some temperature data records with a lower limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/temperature?from=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some temperature data records with an upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/temperature?to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(2)
+          done()
+        })
+    })
+
+    it('it should GET some temperature data records with a lower and upper limit', done => {
+      chai
+        .request(server)
+        .get('/api/controller/dummy-id-1234/temperature?from=2017-08-12&to=2017-08-12')
+        .end((err, res) => {
+          expect(res).to.have.deep.property('status', 200)
+          expect(res.body).to.be.an('array')
+          expect(res.body.length).to.be.equal(1)
+          done()
         })
     })
   })
