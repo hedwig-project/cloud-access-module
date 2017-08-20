@@ -55,6 +55,47 @@ function listHumidity(req, res, next) {
     .catch(e => next(e))
 }
 
+function getHumidityAverage(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+
+  Humidity
+    .aggregate()
+    .match(filter)
+    .group({ _id: null, average: { $avg: '$humidity' } })
+    .project({ _id: 0 })
+    .exec()
+    .then(average => res.status(200).json(average[0]))
+    .catch(e => next(e))
+}
+
+function getHumidityMinimum(req, res, next) {
+  const filter = filterByTime(req.query.from, req.query.to)
+
+  Humidity
+    .aggregate()
+    .match(filter)
+    .group({ _id: null, minimum: { $min: '$humidity' } })
+    .project({ _id: 0 })
+    .exec()
+    .then(average => res.status(200).json(average[0]))
+    .catch(e => next(e))
+}
+
+function getHumidityMaximum(req, res, next) {
+  const filter = filterByTime(req.query.from, req.query.to)
+
+  Humidity
+    .aggregate()
+    .match(filter)
+    .group({ _id: null, minimum: { $max: '$humidity' } })
+    .project({ _id: 0 })
+    .exec()
+    .then(average => res.status(200).json(average[0]))
+    .catch(e => next(e))
+}
+
 function listPresence(req, res, next) {
   const filter = Object.assign(
     filterByTime(req.query.from, req.query.to),
@@ -104,6 +145,51 @@ function listTemperature(req, res, next) {
     .catch(e => next(e))
 }
 
+function getTemperatureAverage(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+
+  Temperature
+    .aggregate()
+    .match(filter)
+    .group({ _id: null, average: { $avg: '$temperature' } })
+    .project({ _id: 0 })
+    .exec()
+    .then(average => res.status(200).json(average[0]))
+    .catch(e => next(e))
+}
+
+function getTemperatureMinimum(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+
+  Temperature
+    .aggregate()
+    .match(filter)
+    .group({ _id: null, average: { $min: '$temperature' } })
+    .project({ _id: 0 })
+    .exec()
+    .then(average => res.status(200).json(average[0]))
+    .catch(e => next(e))
+}
+
+function getTemperatureMaximum(req, res, next) {
+  const filter = Object.assign(
+    filterByTime(req.query.from, req.query.to),
+    { controllerId: req.params.controllerId })
+
+  Temperature
+    .aggregate()
+    .match(filter)
+    .group({ _id: null, average: { $max: '$temperature' } })
+    .project({ _id: 0 })
+    .exec()
+    .then(average => res.status(200).json(average[0]))
+    .catch(e => next(e))
+}
+
 function errorHandler(err, req, res, next) {  // eslint-disable-line no-unused-vars
   const error = { code: err.name, message: err.message, details: err.errors }
   logger.error(error)
@@ -114,8 +200,14 @@ export default {
   listAlarm,
   listGate,
   listHumidity,
+  getHumidityAverage,
+  getHumidityMinimum,
+  getHumidityMaximum,
   listPresence,
   listRelay,
   listTemperature,
+  getTemperatureAverage,
+  getTemperatureMinimum,
+  getTemperatureMaximum,
   errorHandler,
 }

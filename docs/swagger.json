@@ -258,6 +258,144 @@
         }
       }
     },
+    "/controller/{controllerId}/humidity/average": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get humidity average for a specific controller",
+        "description": "Get humidity average for a specific controller. Calculates all-time average if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "average": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/humidity/minimum": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get humidity minimum for a specific controller",
+        "description": "Get humidity minimum for a specific controller. Calculates all-time minimum if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "minimum": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/humidity/maximum": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get humidity maximum for a specific controller",
+        "description": "Get humidity maximum for a specific controller. Calculates all-time maximum if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "maximum": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/controller/{controllerId}/presence": {
       "get": {
         "tags": [
@@ -390,6 +528,144 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Temperature"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/temperature/average": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get temperature average for a specific controller",
+        "description": "Get temperature average for a specific controller. Calculates all-time average if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "average": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/temperature/minimum": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get temperature minimum for a specific controller",
+        "description": "Get temperature minimum for a specific controller. Calculates all-time minimum if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "minimum": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/controller/{controllerId}/temperature/maximum": {
+      "get": {
+        "tags": [
+          "controller"
+        ],
+        "summary": "Get temperature maximum for a specific controller",
+        "description": "Get temperature maximum for a specific controller. Calculates all-time maximum if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "maximum": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -567,6 +843,144 @@
           },
           "500": {
             "description": "ValidationError"
+          }
+        }
+      }
+    },
+    "/humidity/average": {
+      "get": {
+        "tags": [
+          "humidity"
+        ],
+        "summary": "Get humidity average for a specific controller",
+        "description": "Get humidity average for a specific controller. Calculates all-time average if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "average": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/humidity/minimum": {
+      "get": {
+        "tags": [
+          "humidity"
+        ],
+        "summary": "Get humidity minimum for a specific controller",
+        "description": "Get humidity minimum for a specific controller. Calculates all-time minimum if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "minimum": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/humidity/maximum": {
+      "get": {
+        "tags": [
+          "humidity"
+        ],
+        "summary": "Get humidity maximum for a specific controller",
+        "description": "Get humidity maximum for a specific controller. Calculates all-time maximum if no time limit is set.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "controllerId",
+            "description": "Local controller (Morpheus) ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "maximum": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -839,6 +1253,144 @@
           },
           "500": {
             "description": "ValidationError"
+          }
+        }
+      }
+    }
+  },
+  "/temperature/average": {
+    "get": {
+      "tags": [
+        "temperature"
+      ],
+      "summary": "Get temperature average for a specific controller",
+      "description": "Get temperature average for a specific controller. Calculates all-time average if no time limit is set.",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "controllerId",
+          "description": "Local controller (Morpheus) ID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "from",
+          "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "to",
+          "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful operation",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "average": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/temperature/minimum": {
+    "get": {
+      "tags": [
+        "temperature"
+      ],
+      "summary": "Get temperature minimum for a specific controller",
+      "description": "Get temperature minimum for a specific controller. Calculates all-time minimum if no time limit is set.",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "controllerId",
+          "description": "Local controller (Morpheus) ID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "from",
+          "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "to",
+          "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful operation",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "minimum": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/temperature/maximum": {
+    "get": {
+      "tags": [
+        "temperature"
+      ],
+      "summary": "Get temperature maximum for a specific controller",
+      "description": "Get temperature maximum for a specific controller. Calculates all-time maximum if no time limit is set.",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "in": "path",
+          "name": "controllerId",
+          "description": "Local controller (Morpheus) ID",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "from",
+          "description": "Start date (YYYY-MM-dd). Calculation is done considering 00:00:00 as start hour.",
+          "type": "string"
+        },
+        {
+          "in": "query",
+          "name": "to",
+          "description": "Final date (YYYY-MM-dd). Calculation is done considering 23:59:59 as final hour.",
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Successful operation",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "maximum": {
+                "type": "string"
+              }
+            }
           }
         }
       }
