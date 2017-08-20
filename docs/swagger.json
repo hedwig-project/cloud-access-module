@@ -142,7 +142,7 @@
             "name": "controllerId",
             "description": "Local controller (Morpheus) ID",
             "required": true,
-            "schema": "string"
+            "type": "string"
           },
           {
             "in": "query",
@@ -186,7 +186,7 @@
             "name": "controllerId",
             "description": "Local controller (Morpheus) ID",
             "required": true,
-            "schema": "string"
+            "type": "string"
           },
           {
             "in": "query",
@@ -230,7 +230,7 @@
             "name": "controllerId",
             "description": "Local controller (Morpheus) ID",
             "required": true,
-            "schema": "string"
+            "type": "string"
           },
           {
             "in": "query",
@@ -274,7 +274,7 @@
             "name": "controllerId",
             "description": "Local controller (Morpheus) ID",
             "required": true,
-            "schema": "string"
+            "type": "string"
           },
           {
             "in": "query",
@@ -362,7 +362,7 @@
             "name": "controllerId",
             "description": "Local controller (Morpheus) ID",
             "required": true,
-            "schema": "string"
+            "type": "string"
           },
           {
             "in": "query",
